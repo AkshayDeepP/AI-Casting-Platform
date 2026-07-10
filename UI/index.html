@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post Audition</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="nav">
+    <a href="home.html">Home</a>
+    <a href="resultsdir.html">View Results</a>
+  </div>
+
+  <h2>Post an Audition</h2>
+  <p class="subtitle">AI-powered casting and evaluation system</p>
+
+  <div class="card">
+
+    <label class="section-title">Movie Name</label>
+    <input id="movie" placeholder="Enter movie name" />
+
+    <label class="section-title">Role Name</label>
+    <input id="role" placeholder="Enter role name" />
+
+    <label class="section-title">Age Range</label>
+    <input id="ageRange" placeholder="e.g. 20-30" />
+
+    <label class="section-title">Gender Requirement</label>
+    <select id="genderRequirement">
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+    <label class="section-title">Required Skills</label>
+    <div class="skills-grid">
+      <label class="skill-item">
+        <input type="checkbox" value="Acting">
+        <span>Acting</span>
+      </label>
+
+      <label class="skill-item">
+        <input type="checkbox" value="Dancing">
+        <span>Dancing</span>
+      </label>
+
+      <label class="skill-item">
+        <input type="checkbox" value="Singing">
+        <span>Singing</span>
+      </label>
+
+      <label class="skill-item">
+        <input type="checkbox" value="Comedy">
+        <span>Comedy</span>
+      </label>
+    </div>
+
+    <label class="section-title">Application Deadline</label>
+    <input id="deadline" type="date" />
+
+    <label class="section-title">Maximum Applicants</label>
+    <input id="maxApplicants" type="number" placeholder="Enter limit" />
+
+    <button onclick="saveAudition(event)" class="role-btn" style="margin-bottom: 15px;">Post Audition</button>
+
+  </div>
+
+</div>
+
+<!-- future backend support -->
+<script src="script.js"></script>
+
+</body>
+</html>

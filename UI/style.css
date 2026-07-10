@@ -1,0 +1,257 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* BODY */
+body {
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  color: white;
+  min-height: 100vh;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* HEADINGS */
+h2 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #f5c518, #ff7b00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+/* NAVBAR */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #f5c518;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: #ff7b00;
+}
+
+/* CARD */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  padding: 25px;
+  border-radius: 18px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.3s;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 123, 0, 0.2);
+}
+
+/* INPUTS */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background: #222;
+  color: white;
+}
+
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(255,123,0,0.6);
+}
+
+/* BUTTONS */
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(90deg, #f5c518, #ff7b00);
+  color: black;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
+/* SKILLS */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1a1a1a;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.skill-item:hover {
+  background: #2a2a2a;
+}
+
+/* STATUS BADGES */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  float: right;
+}
+
+.status-badge.open { background: #1f8b4c; }
+.status-badge.closed { background: #c0392b; }
+.status-badge.full { background: #e67e22; }
+
+/* TEXT ELEMENTS */
+.score-box {
+  font-size: 22px;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+.reason {
+  font-size: 14px;
+  color: #bbb;
+}
+
+.empty-state {
+  text-align: center;
+  color: #aaa;
+  margin-top: 100px;
+}
+
+.skill-tag {
+  background: #222;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.days-left {
+  font-size: 13px;
+  color: #00ffcc;
+}
+
+/* POSTER */
+.poster {
+  position: relative;
+}
+
+.poster img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.poster .status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* AUTH PAGES */
+.auth-container {
+  display: flex;
+  flex-direction: column;  /* 🔥 important fix */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.auth-card {
+  background: #111;
+  padding: 40px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+}
+
+.auth-card h2 {
+  color: #f5c518;
+  margin-bottom: 20px;
+}
+
+.auth-card input,
+.auth-card select {
+  background: #222;
+}
+.auth-card {
+  transition: 0.3s;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 123, 0, 0.3);
+}
+
+/* PASSWORD TOGGLE */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #f5c518;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-card button {
+  margin-top: 12px;
+}
+
+.auth-card button:first-of-type {
+  margin-top: 20px;  /* more space from text */
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Director Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="nav" style="margin-top: 50px;margin-bottom:50px;">
+    <a href="home.html" style="font-size: large;">Logout</a>
+  </div>
+
+  <h2 style="margin-top: 40px;">Director Panel</h2>
+  <p class="subtitle">Manage your casting</p>
+
+  <div class="card" style="text-align:center;">
+
+    <button class="role-btn" onclick="goToPost()" style="margin-bottom: 15px ;font-size: large;">Post Audition</button>
+
+    <button class="role-btn" style="margin-bottom: 15px;font-size: large;" onclick="goToResults()" >View Results</button>
+
+  </div>
+
+  <div style="display: flex; justify-content: center; margin-top: 30px;">
+    <p style="font-family: cursive; font-style: italic; text-align: center;font-size: x-large;margin-top: 80px;">
+      "A director is the keeper of the dream; while others see the lens, you see the heartbeat behind it."
+    </p>
+  </div>
+
+</div>
+
+<script>
+function goToPost() {
+  window.location.href = "index.html"; // your post audition page
+}
+
+function goToResults() {
+  window.location.href = "resultsdir.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apply for Role</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="nav">
+    <a href="auditions.html">Back</a>
+  </div>
+
+  <h2>Apply for Role</h2>
+  <p class="subtitle">AI-powered casting and evaluation system</p>
+  <div class="card" id="selectedAuditionBox">
+    <!-- Filled dynamically -->
+  </div>
+
+  <div class="card">
+
+    <!-- Name -->
+    <label class="section-title">Name</label>
+    <input id="name" placeholder="Enter your name" />
+
+    <!-- Age -->
+    <label class="section-title">Age</label>
+    <input id="age" type="number" placeholder="Enter age" />
+
+    <!-- Gender -->
+    <label class="section-title">Gender</label>
+    <select id="gender">
+      <option>Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+
+    <!-- Skills -->
+    <label class="section-title">Skills</label>
+    <div class="skills-grid">
+      <label class="skill-item">
+        <input type="checkbox" value="Acting">
+        <span>Acting</span>
+      </label>
+
+      <label class="skill-item">
+        <input type="checkbox" value="Dancing">
+        <span>Dancing</span>
+      </label>
+
+      <label class="skill-item">
+        <input type="checkbox" value="Singing">
+        <span>Singing</span>
+      </label>
+
+      <label class="skill-item">
+        <input type="checkbox" value="Comedy">
+        <span>Comedy</span>
+      </label>
+    </div>
+
+    <!-- Experience -->
+    <label class="section-title">Experience</label>
+    <input id="experience" type="number" placeholder="Years of experience" />
+
+    <!-- Resume -->
+    <label class="section-title">Resume</label>
+    <input id="resume" type="file" />
+
+    <!-- Submit -->
+    <button onclick="submitApplication()" class="role-btn" style="margin-bottom: 15px;">Submit Application</button>
+
+  </div>
+
+</div>
+
+<!-- JS for functionality -->
+<script src="script.js"></script>
+
+</body>
+</html>

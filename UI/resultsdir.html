@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Results</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="nav">
+    <a href="home.html">Logout</a>
+    <a href="directordashboard.html">back</a>
+  </div>
+
+  <h2>AI Screening Results</h2>
+  <p class="subtitle" >AI-powered casting and evaluation system</p>
+  <div style="margin-bottom: 20px;">
+    <button onclick="showAll()" class="role-btn" style="margin-bottom: 10px;">Show All</button>
+    <button onclick="showShortlisted()" class="role-btn" style="margin-bottom: 5px;">Show Shortlisted</button>
+  </div>
+  <!-- Dynamic results will be inserted here -->
+  <div id="results"></div>
+
+</div>
+
+<!-- JS to load results -->
+<script src="script.js"></script>
+
+</body>
+</html>

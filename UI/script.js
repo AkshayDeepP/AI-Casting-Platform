@@ -31,7 +31,7 @@ async function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const res = await fetch("http://localhost:5000/login", {
+  const res = await fetch("https://ai-casting-platform.onrender.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -95,7 +95,7 @@ async function signup() {
   const password = document.getElementById("password").value;
   const role = document.getElementById("role").value;
 
-  const res = await fetch("http://localhost:5000/signup", {
+  const res = await fetch("https://ai-casting-platform.onrender.com/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -142,7 +142,7 @@ async function saveAudition(event) {
     return;
   }
 
-  const response = await fetch("http://localhost:5000/auditions");
+  const response = await fetch("https://ai-casting-platform.onrender.com/auditions");
   let auditions = await response.json();
 
   const newAudition = {
@@ -159,7 +159,7 @@ async function saveAudition(event) {
   };
   
   auditions.push(newAudition);
-  await fetch("http://localhost:5000/auditions", {
+  await fetch("https://ai-casting-platform.onrender.com/auditions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -239,7 +239,7 @@ async function submitApplication() {
     window.location.href = "auditions.html";
     return;
   }
-  const responseAuditions = await fetch("http://localhost:5000/auditions");
+  const responseAuditions = await fetch("https://ai-casting-platform.onrender.com/auditions");
   let auditions = await responseAuditions.json();
 
 
@@ -277,7 +277,7 @@ async function submitApplication() {
     return;
   }
 
-  const response = await fetch("http://localhost:5000/evaluate", {
+  const response = await fetch("https://ai-casting-platform.onrender.com/evaluate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -291,7 +291,7 @@ async function submitApplication() {
   let aiResult;
 
   try {
-    const response = await fetch("http://localhost:5000/evaluate", {
+    const response = await fetch("https://ai-casting-platform.onrender.com/evaluate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -323,7 +323,7 @@ async function submitApplication() {
   };
 
  
-  await fetch("http://localhost:5000/apply", {
+  await fetch("https://ai-casting-platform.onrender.com/apply", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -333,8 +333,7 @@ async function submitApplication() {
       auditionId: audition._id   //  important link
     })
   });
-
-  await fetch(`http://localhost:5000/auditions/${audition._id}`, {
+  await fetch(`https://ai-casting-platform.onrender.com/auditions/${audition._id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -356,7 +355,7 @@ async function loadResults() {
 
   const directorId = localStorage.getItem("token");
 
-  const response = await fetch(`http://localhost:5000/applicants/${directorId}`);
+  const response = await fetch(`https://ai-casting-platform.onrender.com/applicants/${directorId}`);
   let data = await response.json();
 
   data.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
@@ -401,7 +400,7 @@ async function loadResults() {
   const container = document.getElementById("auditions");
   if (!container) return;
 
-  const response = await fetch("http://localhost:5000/auditions");
+  const response = await fetch("https://ai-casting-platform.onrender.com/auditions");
   let auditions = await response.json();
 
   auditions = auditions.map(a => ({

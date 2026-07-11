@@ -341,7 +341,12 @@ app.post("/login", async (req, res) => {
 
   res.json({ token, role: user.role });
 });
-
+app.get("/", (req, res) => {
+  res.json({
+    status: "success",
+    message: "AI Casting Platform Backend is running 🚀"
+  });
+});
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

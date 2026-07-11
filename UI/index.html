@@ -39,27 +39,7 @@
 <script>
     
 
-    const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
-
-    if (token && role) {
-
-        switch (role) {
-
-            case "director":
-                window.location.replace("directordashboard.html");
-                break;
-
-            case "actor":
-                window.location.replace("auditions.html");
-                break;
-
-            default:
-                // Invalid role found
-                localStorage.removeItem("token");
-                localStorage.removeItem("role");
-        }
-    }
+    
 
     document
         .getElementById("loginBtn")

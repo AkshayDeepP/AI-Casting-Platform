@@ -73,7 +73,7 @@ function addLogoutButton() {
   const path = window.location.pathname;
 
   // Skip pages
-  if (path.includes("apply.html") || path.includes("index.html")) return;
+  if (path.includes("apply.html") || path.includes("postaudi.html")) return;
 
   const nav = document.querySelector(".nav");
   if (!nav) return;

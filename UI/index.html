@@ -1,80 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Post Audition</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <title>AI Casting Platform</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+<main class="auth-container">
+    <section class="auth-card">
 
-  <div class="nav">
-    <a href="home.html">Home</a>
-    <a href="resultsdir.html">View Results</a>
-  </div>
+        <h1>🎬 AI Casting Platform</h1>
 
-  <h2>Post an Audition</h2>
-  <p class="subtitle">AI-powered casting and evaluation system</p>
+        <p>
+            Find talent. Get selected. Powered by AI.
+        </p>
 
-  <div class="card">
+        <div class="button-group">
+            <button id="loginBtn" type="button">Login</button>
+            <button id="signupBtn" type="button">Signup</button>
+        </div>
 
-    <label class="section-title">Movie Name</label>
-    <input id="movie" placeholder="Enter movie name" />
+    </section>
+</main>
 
-    <label class="section-title">Role Name</label>
-    <input id="role" placeholder="Enter role name" />
+<script>
+    
 
-    <label class="section-title">Age Range</label>
-    <input id="ageRange" placeholder="e.g. 20-30" />
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
 
-    <label class="section-title">Gender Requirement</label>
-    <select id="genderRequirement">
-      <option value="">Select Gender</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
+    if (token && role) {
 
-    <label class="section-title">Required Skills</label>
-    <div class="skills-grid">
-      <label class="skill-item">
-        <input type="checkbox" value="Acting">
-        <span>Acting</span>
-      </label>
+        switch (role) {
 
-      <label class="skill-item">
-        <input type="checkbox" value="Dancing">
-        <span>Dancing</span>
-      </label>
+            case "director":
+                window.location.replace("directordashboard.html");
+                break;
 
-      <label class="skill-item">
-        <input type="checkbox" value="Singing">
-        <span>Singing</span>
-      </label>
+            case "actor":
+                window.location.replace("auditions.html");
+                break;
 
-      <label class="skill-item">
-        <input type="checkbox" value="Comedy">
-        <span>Comedy</span>
-      </label>
-    </div>
+            default:
+                // Invalid role found
+                localStorage.removeItem("token");
+                localStorage.removeItem("role");
+        }
+    }
 
-    <label class="section-title">Application Deadline</label>
-    <input id="deadline" type="date" />
+    document
+        .getElementById("loginBtn")
+        .addEventListener("click", () => {
+            window.location.href = "login.html";
+        });
 
-    <label class="section-title">Maximum Applicants</label>
-    <input id="maxApplicants" type="number" placeholder="Enter limit" />
+    document
+        .getElementById("signupBtn")
+        .addEventListener("click", () => {
+            window.location.href = "signup.html";
+        });
 
-    <button onclick="saveAudition(event)" class="role-btn" style="margin-bottom: 15px;">Post Audition</button>
-
-  </div>
-
-</div>
-
-<!-- future backend support -->
-<script src="script.js"></script>
+</script>
 
 </body>
 </html>

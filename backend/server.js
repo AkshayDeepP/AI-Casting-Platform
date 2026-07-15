@@ -44,7 +44,8 @@ const applicantSchema = new mongoose.Schema({
   skills: [String],
   score: Number,
   reason: String,
-  auditionId: String
+  auditionId: String,
+  candidateId: String
 });
 
 const Applicant = mongoose.model("Applicant", applicantSchema);

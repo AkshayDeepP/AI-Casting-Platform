@@ -324,6 +324,22 @@ async function submitApplication() {
     reason: aiResult.reason
   };
 
+    const payload = {
+      ...applicant,
+      auditionId: audition._id,
+      candidateId: localStorage.getItem("userId")
+  };
+
+  console.log("Sending payload:", payload);
+
+  await fetch(`${API}/apply`, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+  });
+
  
   await fetch(`${API}/apply`, {
     method: "POST",

@@ -1,3 +1,4 @@
+const API = "https://ai-casting-backend.onrender.com";
 let filterMode = "all";
 
 function showError(inputId, message) {
@@ -31,7 +32,7 @@ async function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const res = await fetch("https://ai-casting-platform.onrender.com/login", {
+  const res = await fetch(`${API}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -44,6 +45,7 @@ async function login() {
   if (data.token) {
     localStorage.setItem("token", data.token);
     localStorage.setItem("role", data.role);
+    localStorage.setItem("userId", data.userId);
 
     alert("Login successful");
 
@@ -95,7 +97,7 @@ async function signup() {
   const password = document.getElementById("password").value;
   const role = document.getElementById("role").value;
 
-  const res = await fetch("https://ai-casting-platform.onrender.com/signup", {
+  const res = await fetch(`${API}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -114,7 +116,7 @@ async function saveAudition(event) {
   const role = document.getElementById("role").value.trim();
   const ageRange = document.getElementById("ageRange").value.trim();
   const deadline = document.getElementById("deadline").value;
-  const directorId = localStorage.getItem("token"); // or userId if you store it
+  const directorId = localStorage.getItem("userId");
   const today = new Date().toISOString().split("T")[0];
   const genderRequirement = document.getElementById("genderRequirement").value;
   if (deadline < today) {
@@ -142,7 +144,7 @@ async function saveAudition(event) {
     return;
   }
 
-  const response = await fetch("https://ai-casting-platform.onrender.com/auditions");
+  const response = await fetch(`${API}/auditions`);
   let auditions = await response.json();
 
   const newAudition = {
@@ -159,7 +161,7 @@ async function saveAudition(event) {
   };
   
   auditions.push(newAudition);
-  await fetch("https://ai-casting-platform.onrender.com/auditions", {
+  await fetch(`${API}/auditions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -239,7 +241,7 @@ async function submitApplication() {
     window.location.href = "auditions.html";
     return;
   }
-  const responseAuditions = await fetch("https://ai-casting-platform.onrender.com/auditions");
+  const responseAuditions = await fetch(`${API}/auditions`);
   let auditions = await responseAuditions.json();
 
 
@@ -277,7 +279,7 @@ async function submitApplication() {
     return;
   }
 
-  const response = await fetch("https://ai-casting-platform.onrender.com/evaluate", {
+  const response = await fetch(`${API}/evaluate`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -291,7 +293,7 @@ async function submitApplication() {
   let aiResult;
 
   try {
-    const response = await fetch("https://ai-casting-platform.onrender.com/evaluate", {
+    const response = await fetch(`${API}/evaluate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -323,7 +325,7 @@ async function submitApplication() {
   };
 
  
-  await fetch("https://ai-casting-platform.onrender.com/apply", {
+  await fetch(`${API}/apply`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -333,7 +335,7 @@ async function submitApplication() {
       auditionId: audition._id   //  important link
     })
   });
-  await fetch(`https://ai-casting-platform.onrender.com/auditions/${audition._id}`, {
+  await fetch(`${API}/auditions/${audition._id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -345,7 +347,6 @@ async function submitApplication() {
 
   alert("Application submitted successfully");
 
-  window.location.href = "resultsdir.html";
   window.location.href = "resultscan.html";
 }
 
@@ -353,9 +354,9 @@ async function loadResults() {
   const container = document.getElementById("results");
   if (!container) return;
 
-  const directorId = localStorage.getItem("token");
+  const directorId = localStorage.getItem("userId");
 
-  const response = await fetch(`https://ai-casting-platform.onrender.com/applicants/${directorId}`);
+  const response = await fetch(`${API}/applicants/${directorId}`);
   let data = await response.json();
 
   data.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
@@ -400,7 +401,7 @@ async function loadResults() {
   const container = document.getElementById("auditions");
   if (!container) return;
 
-  const response = await fetch("https://ai-casting-platform.onrender.com/auditions");
+  const response = await fetch(`${API}/auditions`);
   let auditions = await response.json();
 
   auditions = auditions.map(a => ({

@@ -332,7 +332,8 @@ async function submitApplication() {
     },
     body: JSON.stringify({
       ...applicant,
-      auditionId: audition._id   //  important link
+      auditionId: audition._id , 
+      candidateId: localStorage.getItem("userId")
     })
   });
   await fetch(`${API}/auditions/${audition._id}`, {
@@ -348,6 +349,45 @@ async function submitApplication() {
   alert("Application submitted successfully");
 
   window.location.href = "resultscan.html";
+}
+
+async function loadCandidateResults() {
+  const container = document.getElementById("results");
+  if (!container) return;
+
+  const candidateId = localStorage.getItem("userId");
+
+  const response = await fetch(`${API}/candidate-results/${candidateId}`);
+  const data = await response.json();
+
+  container.innerHTML = "";
+
+  if (data.length === 0) {
+      container.innerHTML = "<p>No applications yet</p>";
+      return;
+  }
+
+  data.forEach(app => {
+      const div = document.createElement("div");
+      div.className = "card";
+
+      div.innerHTML = `
+          <h3>${app.name}</h3>
+          <p><strong>Age:</strong> ${app.age}</p>
+          <p><strong>Skills:</strong> ${app.skills.join(", ")}</p>
+          <p><strong>Experience:</strong> ${app.experience} years</p>
+
+          <div class="score-box">
+              Score: ${app.score}/10
+          </div>
+
+          <div class="reason">
+              ${app.reason}
+          </div>
+      `;
+
+      container.appendChild(div);
+  });
 }
 
 async function loadResults() {
@@ -540,15 +580,22 @@ function showShortlisted() {
 }
 
 window.onload = function () {
-  loadResults();
-  loadAuditions();
-  showSelectedAudition();
 
-  //  Restrict past dates
+  if (window.location.pathname.includes("resultscan.html")) {
+      loadCandidateResults();
+  }
+  else if (window.location.pathname.includes("resultsdir.html")) {
+      loadResults();
+  }
+  else {
+      loadAuditions();
+      showSelectedAudition();
+  }
+
   const today = new Date().toISOString().split("T")[0];
   const deadlineInput = document.getElementById("deadline");
 
   if (deadlineInput) {
-    deadlineInput.setAttribute("min", today);
+      deadlineInput.setAttribute("min", today);
   }
 };

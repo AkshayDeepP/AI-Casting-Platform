@@ -321,6 +321,20 @@ app.post("/signup", async (req, res) => {
   res.json({ message: "Signup successful" });
 });
 
+app.get("/candidate-results/:candidateId", async (req, res) => {
+  try {
+      const applications = await Applicant.find({
+          candidateId: req.params.candidateId
+      });
+
+      res.json(applications);
+  } catch (err) {
+      res.status(500).json({
+          error: err.message
+      });
+  }
+});
+
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
